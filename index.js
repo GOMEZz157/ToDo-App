@@ -42,7 +42,7 @@ app.get('/', (requisicao, resposta) => {
         if(erro){
             return console.log(erro)
         }
-        
+
         const tarefas = dados.map((dado) =>{
             return {
                 id: dado.id,
@@ -50,9 +50,9 @@ app.get('/', (requisicao, resposta) => {
                 completa: dado.completa === 0 ? false : true
             }
         })
-    })
 
-    resposta.render('home')
+        resposta.render('home', {tarefas})
+    })
 })
 
 const conexao = mysql.createConnection({
